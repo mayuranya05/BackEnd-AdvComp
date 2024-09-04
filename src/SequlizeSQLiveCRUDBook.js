@@ -14,7 +14,7 @@ app.use(express.json());
 const sequelize = new Sequelize('database', 'username', 'password', {
     host: 'localhost',
     dialect: 'sqlite', //การคุยกับ sqlite
-    Storage: './Database/SQBooks.sqlite'
+    storage: './Database/SQBooks.sqlite'
 });
 
 //
@@ -86,7 +86,7 @@ app.put('/books/:id', (req, res) => {
 });
 
 //
-app.put('/books/:id', (req, res) => {
+app.delete('/books/:id', (req, res) => {
     Book.findByPk(req.params.id).then(book => {
         if (!book) {
             res.status(404).send('Book not found');
